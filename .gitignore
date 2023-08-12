@@ -362,5 +362,10 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-appsettings.json
+/appsettings.json/ 
+
+/CabManagementSystem/CabManagementSystem.db-shm
+/CabManagementSystem/CabManagementSystem.db-wal
 CabManagementSystem.db
+/CabManagementSystem/CabManagementSystem.db
+*.db

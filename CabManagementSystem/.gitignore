@@ -229,3 +229,9 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+/appsettings.json/ 
+
+CabManagementSystem.db
+/CabManagementSystem/CabManagementSystem.db
+*.db
