@@ -28,6 +28,7 @@ namespace CabManagementSystem
             
 
             services.AddControllersWithViews();
+            services.AddCors();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
@@ -57,6 +58,8 @@ namespace CabManagementSystem
             }
 
             app.UseRouting();
+
+            app.UseCors(x=>x.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
 
             app.UseEndpoints(endpoints =>
             {
