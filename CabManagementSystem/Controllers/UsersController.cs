@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace CabManagementSystem.Controllers
 {
-    [ApiController] // Indicates that a type and all derived types are used to serve HTTP API responses.
-    [Route("api/[controller]")]
-    public class UsersController : ControllerBase //A base class for an MVC controller without view support.
+    
+    public class UsersController : BaseApiController //A base class for an MVC controller without view support.
                                                   //For view support we will use Angular
     {
         //to get a data from database we use dependency injection
