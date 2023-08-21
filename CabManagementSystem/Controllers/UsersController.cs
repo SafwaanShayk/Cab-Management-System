@@ -1,5 +1,6 @@
 ﻿using CabManagementSystem.Data;
 using CabManagementSystem.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace CabManagementSystem.Controllers
 
         //Endpoints
         [HttpGet]
+        [AllowAnonymous]
         //Actionresult a controller action returns in response to a browser request.
         public async Task<ActionResult<IEnumerable<AppUser>>> GetUser()
         {
@@ -31,6 +33,7 @@ namespace CabManagementSystem.Controllers
 
 
         // e.g api/users/3(id)
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<AppUser>> GetUser(int id)
         {

@@ -1,4 +1,8 @@
 using CabManagementSystem.Data;
+using CabManagementSystem.Extensions;
+using CabManagementSystem.Interface;
+using CabManagementSystem.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -7,6 +11,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace CabManagementSystem
 {
@@ -21,14 +27,10 @@ namespace CabManagementSystem
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(options =>
-            {
-                options.UseSqlite(_config.GetConnectionString("DefaultConnection") ); 
-            });
-            
-
+            services.AddApplicationServices(_config);
             services.AddControllersWithViews();
             services.AddCors();
+            services.AddIdentityServices(_config);
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
@@ -60,6 +62,10 @@ namespace CabManagementSystem
             app.UseRouting();
 
             app.UseCors(x=>x.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
+
+            app.UseAuthentication();
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
