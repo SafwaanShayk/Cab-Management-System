@@ -1,0 +1,50 @@
+<div class="container">
+  <h1>Welcome Administrator !</h1>
+  <div class="row">
+    <!-- *ngIf="accountService.isAdmin$ | async" -->
+
+    <div class="col">
+      <div class="card" style="width: 22rem">
+        <div class="card-body">
+          <h3 class="card-title">Add Managers</h3>
+          <button type="button" class="btn btn-primary" (click)="showInput()">
+            Add
+          </button>
+          <button type="button" class="btn btn-secondary">Modify</button>
+          <button type="button" class="btn btn-danger">Remove</button>
+        </div>
+      </div>
+    </div>
+    <div class="col" *ngIf="hideInput">
+      <form>
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="addName"
+          name="name"
+        />
+
+        <label>ID</label>
+        <input type="text" class="form-control" [(ngModel)]="addId" name="id" />
+
+        <button type="submit" class="btn btn-primary" (click)="add($event)">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="card" style="width: 18rem">
+  <div class="card-body">
+    <h5 class="card-title">Current Managers</h5>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let manager of managers; let i = index"
+      >
+        {{ manager }} | {{ managersId[i] }}
+      </li>
+    </ul>
+  </div>
+</div>
