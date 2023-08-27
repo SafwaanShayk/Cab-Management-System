@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { AccountService } from '../_services/account.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ManagersService } from '../_services/managers.service';
+import { Manager } from '../_models/manager';
 
 @Component({
   selector: 'app-home',
@@ -7,27 +10,18 @@ import { AccountService } from '../_services/account.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  managers: string[] = [];
-  managersId: string[] = [];
-  addName: any;
-  addId: any;
-  hideInput: boolean = false;
+  managers: Manager[] = [];
 
-  constructor(public accountService: AccountService) {}
+  constructor() {}
 
-  ngOnInit(): void {}
-
-  add(event: Event) {
-    event.preventDefault();
-    if (this.addName && this.addId) {
-      this.managers.push(this.addName);
-      this.managersId.push(this.addId);
-    }
-
-    this.addName = '';
-    this.addId = '';
-  }
-  showInput() {
-    this.hideInput = true;
+  ngOnInit(): void {
+    // this.managersService.getManagers().subscribe({
+    //   next: (manager) => {
+    //     this.manager = manager;
+    //   },
+    //   error: (response) => {
+    //     console.log(response);
+    //   },
+    // });
   }
 }

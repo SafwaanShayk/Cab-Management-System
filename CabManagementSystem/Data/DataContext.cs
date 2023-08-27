@@ -11,5 +11,7 @@ namespace CabManagementSystem.Data
         }
 
         public DbSet<AppUser> Users{get;set;}
+        public DbSet<Managers> Managers { get; set; }
+
     }
 }
