@@ -11,10 +11,17 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HomeComponent } from './home/home.component';
 import { ToastrModule } from 'ngx-toastr';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { AddManagersComponent } from './add-managers/add-managers.component';
+import { AddManagersComponent } from './managersComponent/add-managers/add-managers.component';
+import { EditManagerComponent } from './managersComponent/edit-manager/edit-manager.component';
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, HomeComponent, AddManagersComponent],
+  declarations: [
+    AppComponent,
+    NavComponent,
+    HomeComponent,
+    AddManagersComponent,
+    EditManagerComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,0 +1,76 @@
+<button type="button" class="btn btn-primary" (click)="openModal(template)">
+  Add Manager
+</button>
+
+<ng-template #template>
+  <div class="modal-body">
+    <form #form="ngForm" (ngSubmit)="addManager()">
+      <div class="modal-header">
+        <h4 class="modal-title">Add Employee</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input
+            type="text"
+            class="form-control"
+            required
+            [(ngModel)]="addManagerRequest.fullName"
+            name="FullName"
+          />
+        </div>
+        <div class="form-group">
+          <label>Date of Joining</label>
+          <input
+            type="date"
+            class="form-control"
+            required
+            [(ngModel)]="addManagerRequest.date"
+            name="Date"
+          />
+        </div>
+        <div class="form-group">
+          <label>Age</label>
+          <input
+            type="number"
+            class="form-control"
+            required
+            [(ngModel)]="addManagerRequest.age"
+            name="Age"
+          />
+        </div>
+        <div class="form-group">
+          <label for="inputState">Gender</label>
+          <select
+            id="inputState"
+            class="form-control"
+            [(ngModel)]="addManagerRequest.gender"
+            name="Gender"
+          >
+            <option selected>Male</option>
+            <option>Female</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-default"
+          data-dismiss="modal"
+          value="Cancel"
+          (click)="modalRef?.hide()"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          class="btn btn-success"
+          value="Add"
+          (click)="modalRef?.hide()"
+        >
+          Add
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-template>

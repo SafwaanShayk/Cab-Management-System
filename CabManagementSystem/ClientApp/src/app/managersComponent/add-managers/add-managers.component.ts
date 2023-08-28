@@ -1,7 +1,13 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
-import { Manager } from '../_models/manager';
-import { ManagersService } from '../_services/managers.service';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+  TemplateRef,
+} from '@angular/core';
+import { ManagersService } from '../../_services/managers.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { Manager } from 'src/app/_models/manager';
 
 @Component({
   selector: 'app-add-managers',
@@ -9,14 +15,15 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
   styleUrls: ['./add-managers.component.css'],
 })
 export class AddManagersComponent implements OnInit {
+  @Output() managerAdded: EventEmitter<void> = new EventEmitter<void>();
   modalRef?: BsModalRef;
 
   addManagerRequest: Manager = {
-    Id: '',
-    FullName: '',
-    Age: 0,
-    Date: '',
-    Gender: '',
+    id: '',
+    fullName: '',
+    age: 0,
+    date: '',
+    gender: '',
   };
   constructor(
     private managersService: ManagersService,
@@ -24,15 +31,16 @@ export class AddManagersComponent implements OnInit {
   ) {}
 
   addManager() {
+    // console.log('request', this.addManagerRequest);
     this.managersService.addManager(this.addManagerRequest).subscribe({
       next: (manager) => {
         console.log(manager);
+        this.managerAdded.emit();
       },
       error: (response) => {
         console.log(response);
       },
     });
-    //console.log(this.addManagerRequest);
   }
   ngOnInit(): void {}
 

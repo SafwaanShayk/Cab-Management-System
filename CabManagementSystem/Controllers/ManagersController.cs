@@ -26,7 +26,7 @@ namespace CabManagementSystem.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddManagers([FromForm] Managers managersRequest)
+        public async Task<IActionResult> AddManagers([FromBody] Managers managersRequest)
         {
             managersRequest.Id = Guid.NewGuid();
 

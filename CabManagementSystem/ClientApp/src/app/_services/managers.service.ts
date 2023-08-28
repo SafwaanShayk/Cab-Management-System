@@ -16,10 +16,17 @@ export class ManagersService {
   }
 
   addManager(addManagerRequest: Manager): Observable<Manager> {
-    //addManagerRequest.Id = '00000000-0000-0000-000000000000';
+    addManagerRequest.id = '00000000-0000-0000-0000-000000000000';
     return this.http.post<Manager>(
       this.baseUrl + 'Managers',
       addManagerRequest
+    );
+  }
+
+  updateManager(updatedManager: Manager): Observable<Manager> {
+    return this.http.put<Manager>(
+      `${this.baseUrl}Managers/${updatedManager.id}`,
+      updatedManager
     );
   }
 }

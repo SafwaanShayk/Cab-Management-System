@@ -1,7 +1,7 @@
 export interface Manager {
-  Id: string;
-  FullName: string;
-  Age: number;
-  Date: string;
-  Gender: string;
+  id: string;
+  fullName: string;
+  age: number;
+  date: string;
+  gender: string;
 }
