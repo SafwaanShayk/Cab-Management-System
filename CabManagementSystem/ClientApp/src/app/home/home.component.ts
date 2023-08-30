@@ -2,7 +2,6 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ManagersService } from '../_services/managers.service';
 import { Manager } from '../_models/manager';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { EditManagerComponent } from '../managersComponent/edit-manager/edit-manager.component';
 
 @Component({
   selector: 'app-home',
@@ -22,6 +21,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.refreshManagers();
   }
+
   refreshManagers() {
     this.managersService.getManagers().subscribe({
       next: (managers) => {
@@ -33,16 +33,13 @@ export class HomeComponent implements OnInit {
     });
   }
   onManagerAdded() {
-    // Call refreshManagers() to update the list
+    this.refreshManagers();
+  }
+  onManagerUpdated() {
     this.refreshManagers();
   }
 
-  editManager(manager: Manager) {
-    const initialState = {
-      manager: { manager }, // Clone the manager object to avoid modifying the original
-    };
-    this.modalRef = this.modalService.show(EditManagerComponent, {
-      // initialState,
-    });
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
 }

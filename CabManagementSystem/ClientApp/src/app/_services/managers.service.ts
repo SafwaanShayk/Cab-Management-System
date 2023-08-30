@@ -23,10 +23,21 @@ export class ManagersService {
     );
   }
 
-  updateManager(updatedManager: Manager): Observable<Manager> {
+  getManager(id: string): Observable<Manager> {
+    return this.http.get<Manager>(this.baseUrl + 'Managers/' + id);
+  }
+
+  updateManager(
+    id: string,
+    updateManagerRequest: Manager
+  ): Observable<Manager> {
     return this.http.put<Manager>(
-      `${this.baseUrl}Managers/${updatedManager.id}`,
-      updatedManager
+      this.baseUrl + 'Managers/' + id,
+      updateManagerRequest
     );
+  }
+
+  deleteManager(id: string): Observable<Manager> {
+    return this.http.delete<Manager>(this.baseUrl + 'Managers/' + id);
   }
 }

@@ -1,21 +1,32 @@
-<button type="button" class="btn btn-primary" (click)="openModal(template)">
-  Add Manager
+<button type="button" class="btn btn-success" (click)="openModal(template)">
+  Edit
 </button>
 
 <ng-template #template>
   <div class="modal-body">
-    <form #form="ngForm" (ngSubmit)="addManager()">
+    <form #form="ngForm" (ngSubmit)="updateManager()">
       <div class="modal-header">
-        <h4 class="modal-title">Add Manager</h4>
+        <h4 class="modal-title">Edit Manager</h4>
       </div>
       <div class="modal-body">
+        <div class="form-group">
+          <label>ID</label>
+          <input
+            type="text"
+            class="form-control"
+            required
+            [(ngModel)]="managerDetails.id"
+            name="id"
+            readonly
+          />
+        </div>
         <div class="form-group">
           <label>Full Name</label>
           <input
             type="text"
             class="form-control"
             required
-            [(ngModel)]="addManagerRequest.fullName"
+            [(ngModel)]="managerDetails.fullName"
             name="FullName"
           />
         </div>
@@ -25,7 +36,7 @@
             type="datetime-local"
             class="form-control"
             required
-            [(ngModel)]="addManagerRequest.date"
+            [(ngModel)]="managerDetails.date"
             name="Date"
           />
         </div>
@@ -35,7 +46,7 @@
             type="number"
             class="form-control"
             required
-            [(ngModel)]="addManagerRequest.age"
+            [(ngModel)]="managerDetails.age"
             name="Age"
           />
         </div>
@@ -44,7 +55,7 @@
           <select
             id="inputState"
             class="form-control"
-            [(ngModel)]="addManagerRequest.gender"
+            [(ngModel)]="managerDetails.gender"
             name="Gender"
           >
             <option selected>Male</option>
@@ -64,11 +75,19 @@
         </button>
         <button
           type="submit"
-          class="btn btn-success"
-          value="Add"
+          class="btn btn-primary"
+          value="Save"
           (click)="modalRef?.hide()"
         >
-          Add
+          Save
+        </button>
+        <button
+          type="submit"
+          class="btn btn-danger"
+          (click)="deleteManager(managerDetails.id)"
+          (click)="modalRef?.hide()"
+        >
+          Delete
         </button>
       </div>
     </form>

@@ -144,14 +144,11 @@
           <td>{{ manager.age }}</td>
           <td>{{ manager.gender }}</td>
           <td>
-            <button
-              type="submit"
-              class="btn btn-success"
-              (click)="editManager(manager)"
-            >
-              Edit
-            </button>
-            <button type="submit" class="btn btn-danger">Delete</button>
+            <app-edit-managers
+              [managerDetails]="manager"
+              (managerUpdated)="onManagerUpdated()"
+              [routerLink]="['/edit-managers', manager.id]"
+            ></app-edit-managers>
           </td>
         </tr>
       </tbody>

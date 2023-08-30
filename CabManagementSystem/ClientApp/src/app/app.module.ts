@@ -12,7 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { ToastrModule } from 'ngx-toastr';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AddManagersComponent } from './managersComponent/add-managers/add-managers.component';
-import { EditManagerComponent } from './managersComponent/edit-manager/edit-manager.component';
+import { EditManagersComponent } from './managersComponent/edit-managers/edit-managers.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import { EditManagerComponent } from './managersComponent/edit-manager/edit-mana
     NavComponent,
     HomeComponent,
     AddManagersComponent,
-    EditManagerComponent,
+    EditManagersComponent,
   ],
   imports: [
     BrowserModule,

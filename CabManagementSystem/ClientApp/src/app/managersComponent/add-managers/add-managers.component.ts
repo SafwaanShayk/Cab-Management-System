@@ -34,7 +34,6 @@ export class AddManagersComponent implements OnInit {
     // console.log('request', this.addManagerRequest);
     this.managersService.addManager(this.addManagerRequest).subscribe({
       next: (manager) => {
-        console.log(manager);
         this.managerAdded.emit();
       },
       error: (response) => {
