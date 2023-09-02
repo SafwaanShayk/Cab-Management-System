@@ -13,6 +13,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AddManagersComponent } from './managersComponent/add-managers/add-managers.component';
 import { EditManagersComponent } from './managersComponent/edit-managers/edit-managers.component';
+import { FinanceComponent } from './finance/finance/finance.component';
+import { VehicleBillingComponent } from './finance/vehicle-billing/vehicle-billing.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { EditManagersComponent } from './managersComponent/edit-managers/edit-ma
     HomeComponent,
     AddManagersComponent,
     EditManagersComponent,
+    FinanceComponent,
+    VehicleBillingComponent,
   ],
   imports: [
     BrowserModule,

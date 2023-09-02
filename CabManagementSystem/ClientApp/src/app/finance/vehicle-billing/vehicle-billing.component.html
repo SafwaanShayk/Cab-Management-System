@@ -1,0 +1,41 @@
+<form #form="ngForm" (ngSubmit)="addBilling()">
+  <h6 class="mb-4">Update Vehicle Billing Details</h6>
+
+  <div class="form-group">
+    <label for="mileage">Mileage (in miles):</label>
+    <input
+      type="number"
+      class="form-control"
+      id="mileage"
+      placeholder="Enter Mileage"
+      required
+      name="mileage"
+      [(ngModel)]="addBillingRequest.mileage"
+    />
+  </div>
+  <div class="form-group">
+    <label for="fuelConsumption">Fuel Consumption (in gallons):</label>
+    <input
+      type="number"
+      class="form-control"
+      id="fuelConsumption"
+      placeholder="Enter Fuel Consumption"
+      required
+      name="fuel"
+      [(ngModel)]="addBillingRequest.fuel"
+    />
+  </div>
+  <div class="form-group">
+    <label for="serviceDate">Last Service Date:</label>
+    <input
+      type="date"
+      class="form-control"
+      id="serviceDate"
+      required
+      name="date"
+      [(ngModel)]="addBillingRequest.date"
+    />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Add</button>
+</form>

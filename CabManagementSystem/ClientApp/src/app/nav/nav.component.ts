@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class NavComponent implements OnInit {
   model: any = {};
-  isAdmin: boolean = false;
+  //isAdmin: boolean = false;
 
   constructor(
     public accountService: AccountService,
@@ -17,9 +17,9 @@ export class NavComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.accountService.isAdmin$.subscribe((isAdmin) => {
-      isAdmin;
-    });
+    // this.accountService.isAdmin$.subscribe((isAdmin) => {
+    //   isAdmin;
+    // });
   }
 
   login() {

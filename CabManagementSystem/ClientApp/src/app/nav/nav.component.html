@@ -2,13 +2,24 @@
   <div class="container">
     <a class="navbar-brand" href="#">Cab Management System</a>
 
-    <ul class="navbar-nav mr-auto" *ngIf="accountService.currentUser$ | async">
+    <ul class="navbar-nav mr-auto">
+      <!-- *ngIf="accountService.currentUser$ | async" -->
       <li class="nav-item">
-        <a class="nav-link" href="#">Home </a>
+        <a
+          class="nav-link"
+          routerLink="/update-billing"
+          routerLinkActive="active"
+          >Billing</a
+        >
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
+      <!-- <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/update-billing"
+          routerLinkActive="active"
+          >Payment</a
+        >
+      </li> -->
     </ul>
     <div class="dropdown" *ngIf="accountService.currentUser$ | async" dropdown>
       <a class="dropdown-toggle text-light" dropdownToggle>Welcome User</a>

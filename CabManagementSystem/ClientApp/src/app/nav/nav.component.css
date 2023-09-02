@@ -2,3 +2,8 @@
 .dropdown-item {
   cursor: pointer;
 }
+a {
+  list-style: none;
+  text-decoration: none;
+  color: gray;
+}

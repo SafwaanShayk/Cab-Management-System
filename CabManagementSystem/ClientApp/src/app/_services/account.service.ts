@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { User } from '../_models/user';
-import { BehaviorSubject, ReplaySubject, of } from 'rxjs';
+import { BehaviorSubject, ReplaySubject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -12,8 +12,11 @@ export class AccountService {
   private currentUserSource = new BehaviorSubject<User | null>(null);
   currentUser$ = this.currentUserSource.asObservable();
 
-  private isAdminSubject = new ReplaySubject<boolean | null>(1);
+  private isAdminSubject = new ReplaySubject<boolean>(1);
   isAdmin$ = this.isAdminSubject.asObservable();
+
+  private isFinanceSubject = new ReplaySubject<boolean>(1);
+  isFinance$ = this.isFinanceSubject.asObservable();
 
   constructor(private http: HttpClient) {}
 
@@ -27,6 +30,9 @@ export class AccountService {
 
           const isAdmin = response.username.includes('@admin.com');
           this.isAdminSubject.next(isAdmin);
+
+          const isFinance = response.username.includes('@finm.com');
+          this.isFinanceSubject.next(isFinance);
         }
       })
     );
@@ -38,6 +44,7 @@ export class AccountService {
   logout() {
     localStorage.removeItem('user');
     this.currentUserSource.next(null);
-    this.isAdminSubject.next(null);
+    this.isAdminSubject.next(false);
+    this.isFinanceSubject.next(false);
   }
 }

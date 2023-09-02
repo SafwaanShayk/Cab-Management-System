@@ -18,8 +18,7 @@ import { ManagersService } from 'src/app/_services/managers.service';
 })
 export class EditManagersComponent implements OnInit {
   @Output() managerUpdated: EventEmitter<void> = new EventEmitter<void>();
-  @Input()
-  managerDetails!: Manager;
+  @Input() managerDetails!: Manager;
 
   // managerDetails: Manager = {
   //   id: '',
@@ -35,10 +34,7 @@ export class EditManagersComponent implements OnInit {
     private managerService: ManagersService
   ) {}
 
-  ngOnInit(): void {}
-
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
+  ngOnInit(): void {
     this.route.paramMap.subscribe({
       next: (params) => {
         const id = params.get('id');
@@ -47,19 +43,24 @@ export class EditManagersComponent implements OnInit {
           this.managerService.getManager(id).subscribe({
             next: (response) => {
               this.managerDetails = response;
-              this.managerUpdated.emit();
+              //this.managerUpdated.emit();
             },
           });
         }
       },
     });
   }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
   updateManager() {
     this.managerService
       .updateManager(this.managerDetails.id, this.managerDetails)
       .subscribe({
         next: (response) => {
-          this.managerUpdated.emit();
+          //this.managerDetails = response;
+          // this.managerUpdated.emit();
         },
       });
   }
@@ -67,6 +68,7 @@ export class EditManagersComponent implements OnInit {
   deleteManager(id: string) {
     this.managerService.deleteManager(id).subscribe({
       next: (response) => {
+        //this.managerDetails = response;
         this.managerUpdated.emit();
       },
     });

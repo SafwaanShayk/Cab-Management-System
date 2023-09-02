@@ -1,0 +1,35 @@
+<div class="container">
+  <!-- *ngIf="accountService.isFinance$ | async" -->
+  <div class="wel">
+    <h2>Welcome Finance Manager</h2>
+  </div>
+
+  <div class="table-wrapper">
+    <div class="table-title">
+      <h3>Vehicle Billing Details</h3>
+    </div>
+    <table
+      class="table table-striped table-hover"
+      *ngIf="billings && billings.length > 0"
+    >
+      <thead>
+        <tr>
+          <th>Vehicle ID</th>
+          <th>Mileage</th>
+          <th>Last Service Date</th>
+          <th>Fuel Consumption</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let billing of billings">
+          <td>{{ billing.id }}</td>
+          <td>{{ billing.mileage }}</td>
+          <td>{{ billing.fuel }}</td>
+          <td>{{ billing.date }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p *ngIf="!billings || billings.length <= 0">No Managers Found</p>
+  </div>
+  <!-- Form for updating billing details -->
+</div>
