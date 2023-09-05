@@ -40,6 +40,60 @@ namespace CabManagementSystem.Controllers
             return Ok(billingRequest);
 
         }
+
+        [HttpGet]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> GetBillingId([FromRoute] Guid id)
+        {
+            var billingId =await _dataContext.Billing.FirstOrDefaultAsync(x => x.Id == id);
+            if(billingId == null)
+            {
+                return NotFound();
+            }
+            return Ok(billingId);
+        }
+
+        [HttpPut]
+        [Route("{id:Guid}")]
+
+        public async Task<IActionResult> UpdateBilling([FromRoute] Guid id, Billing updateBillingRequest)
+        {
+            var billing = await _dataContext.Billing.FindAsync(id);
+
+            if (billing == null)
+            {
+                return NotFound();
+            }
+            billing.Mileage = updateBillingRequest.Mileage;
+            billing.Fuel = updateBillingRequest.Fuel;
+            billing.Date = updateBillingRequest.Date;
+
+            await _dataContext.SaveChangesAsync();
+
+            return Ok(billing);
+
+        }
+
+
+        [HttpDelete]
+        [Route("{id:Guid}")]
+
+        public async Task<IActionResult> DeleteBilling([FromRoute] Guid id)
+        {
+            var billing = await _dataContext.Billing.FindAsync(id);
+
+            if (billing == null)
+            {
+                return NotFound();
+            }
+
+            _dataContext.Billing.Remove(billing);
+            await _dataContext.SaveChangesAsync();
+
+            return Ok();
+
+        }
+
     }
 
 

@@ -11,7 +11,9 @@ import { BillingService } from 'src/app/_services/billing.service';
 export class FinanceComponent implements OnInit {
   isFinance: boolean = false;
   billings: Billing[] = [];
+  cost: number = 0;
 
+  
   constructor(
     public accountService: AccountService,
     public billingService: BillingService

@@ -1,5 +1,4 @@
-<div class="container">
-  <!-- *ngIf="accountService.isFinance$ | async" -->
+<div class="container" *ngIf="accountService.isFinance$ | async">
   <div class="wel">
     <h2>Welcome Finance Manager</h2>
   </div>
@@ -15,9 +14,10 @@
       <thead>
         <tr>
           <th>Vehicle ID</th>
-          <th>Mileage</th>
+          <th>Mileage(km)</th>
+          <th>Fuel Consumption(Litres)</th>
           <th>Last Service Date</th>
-          <th>Fuel Consumption</th>
+          <th>Cost</th>
         </tr>
       </thead>
       <tbody>
@@ -26,6 +26,8 @@
           <td>{{ billing.mileage }}</td>
           <td>{{ billing.fuel }}</td>
           <td>{{ billing.date }}</td>
+          <td>{{ billing.fuel * 304 }}</td>
+          <td><a [routerLink]="['/edit', billing.id]">Edit</a></td>
         </tr>
       </tbody>
     </table>

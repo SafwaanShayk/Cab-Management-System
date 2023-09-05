@@ -15,6 +15,7 @@ import { AddManagersComponent } from './managersComponent/add-managers/add-manag
 import { EditManagersComponent } from './managersComponent/edit-managers/edit-managers.component';
 import { FinanceComponent } from './finance/finance/finance.component';
 import { VehicleBillingComponent } from './finance/vehicle-billing/vehicle-billing.component';
+import { EditBillingComponent } from './finance/edit-billing/edit-billing.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { VehicleBillingComponent } from './finance/vehicle-billing/vehicle-billi
     EditManagersComponent,
     FinanceComponent,
     VehicleBillingComponent,
+    EditBillingComponent,
   ],
   imports: [
     BrowserModule,
